@@ -1,0 +1,270 @@
+{
+  "mode": "icon-spec-authoring",
+  "layout": "delivery",
+  "spec": "tmp/work/spec.json",
+  "work_spec": "tmp/work/spec.json",
+  "name": "VinylIcon",
+  "canvas": 1024,
+  "target_platforms": [
+    "macOS"
+  ],
+  "deliverable_type": "icon-composer-package",
+  "source_reference": "Existing Vinyl Widget app icon, used for product context; intentional modern redesign.",
+  "brief": "A modern, restrained macOS icon for a Spotify vinyl player: a graphite record, soft mint label, and a simple silver tonearm on a pale sage field. Recognizable at Dock size.",
+  "renderer": "@resvg/resvg-js",
+  "generated_files": [
+    "vinyl-icon.preview.svg",
+    "vinyl-icon.preview.png",
+    "vinyl-icon.svg",
+    "vinyl-icon.png",
+    "layers/01-background.svg",
+    "layers/02-record.svg",
+    "layers/03-label.svg",
+    "layers/04-tonearm.svg",
+    "VinylIcon.icon/icon.json",
+    "VinylIcon.icon/Assets/01-record.svg",
+    "VinylIcon.icon/Assets/02-label.svg",
+    "VinylIcon.icon/Assets/03-tonearm.svg",
+    "tmp/README.md",
+    "tmp/reports/style-report.json",
+    "tmp/reports/package-verification.json",
+    "tmp/reports/reference-diff.png",
+    "tmp/reports/reference-overlay.png",
+    "tmp/reports/reference-side-by-side.png",
+    "tmp/reports/visual-review.json"
+  ],
+  "generated_directories": [
+    "VinylIcon.icon/Assets",
+    "tmp/reports",
+    "layers",
+    "VinylIcon.icon",
+    "tmp"
+  ],
+  "preview_svg": "vinyl-icon.preview.svg",
+  "preview_png": "vinyl-icon.preview.png",
+  "app_svg": "vinyl-icon.svg",
+  "app_png": "vinyl-icon.png",
+  "layers": [
+    "layers/01-background.svg",
+    "layers/02-record.svg",
+    "layers/03-label.svg",
+    "layers/04-tonearm.svg"
+  ],
+  "apple_adapter": {
+    "bundle": "VinylIcon.icon",
+    "exports": {
+      "status": "skipped",
+      "reason": "icon-composer-ictool-not-found",
+      "scale": 1,
+      "platforms": [
+        "macOS"
+      ],
+      "profiles": [
+        {
+          "platform": "macOS",
+          "width": 1024,
+          "height": 1024,
+          "renditions": [
+            "Default",
+            "Dark",
+            "TintedLight",
+            "TintedDark",
+            "ClearLight",
+            "ClearDark"
+          ]
+        }
+      ],
+      "files": []
+    }
+  },
+  "icon_composer_bundle": "VinylIcon.icon",
+  "apple_exports": {
+    "status": "skipped",
+    "reason": "icon-composer-ictool-not-found",
+    "scale": 1,
+    "platforms": [
+      "macOS"
+    ],
+    "profiles": [
+      {
+        "platform": "macOS",
+        "width": 1024,
+        "height": 1024,
+        "renditions": [
+          "Default",
+          "Dark",
+          "TintedLight",
+          "TintedDark",
+          "ClearLight",
+          "ClearDark"
+        ]
+      }
+    ],
+    "files": []
+  },
+  "icon_composer_asset_format": "svg",
+  "icon_composer_assets": [
+    "VinylIcon.icon/Assets/01-record.svg",
+    "VinylIcon.icon/Assets/02-label.svg",
+    "VinylIcon.icon/Assets/03-tonearm.svg"
+  ],
+  "icon_composer_group_settings": {
+    "blend-mode": "normal",
+    "hidden": false,
+    "layers": [
+      {
+        "image-name": "03-tonearm.svg",
+        "name": "tonearm",
+        "position": {
+          "scale": 1,
+          "translation-in-points": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "image-name": "02-label.svg",
+        "name": "label",
+        "position": {
+          "scale": 1,
+          "translation-in-points": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "image-name": "01-record.svg",
+        "name": "record",
+        "position": {
+          "scale": 1,
+          "translation-in-points": [
+            0,
+            0
+          ]
+        }
+      }
+    ],
+    "lighting": "individual",
+    "name": "vinylicon",
+    "position": {
+      "scale": 1,
+      "translation-in-points": [
+        0,
+        0
+      ]
+    }
+  },
+  "icon_composer_json_layer_order": "front-to-back",
+  "icon_composer_json_assets": [
+    "VinylIcon.icon/Assets/03-tonearm.svg",
+    "VinylIcon.icon/Assets/02-label.svg",
+    "VinylIcon.icon/Assets/01-record.svg"
+  ],
+  "preview_background_layers": [
+    {
+      "layer": "background",
+      "source_layer": "layers/01-background.svg",
+      "role": "preview-only-simple-fill"
+    }
+  ],
+  "icon_composer_layer_decisions": [
+    {
+      "layer": "record",
+      "asset": "VinylIcon.icon/Assets/01-record.svg",
+      "source_layer": "layers/02-record.svg",
+      "format": "svg",
+      "reason": "Editable circles representing the record and a few restrained grooves.",
+      "editability": "imported as editable vector",
+      "text_handling": "not text"
+    },
+    {
+      "layer": "label",
+      "asset": "VinylIcon.icon/Assets/02-label.svg",
+      "source_layer": "layers/03-label.svg",
+      "format": "svg",
+      "reason": "Separate record label and spindle.",
+      "editability": "imported as editable vector",
+      "text_handling": "not text"
+    },
+    {
+      "layer": "tonearm",
+      "asset": "VinylIcon.icon/Assets/03-tonearm.svg",
+      "source_layer": "layers/04-tonearm.svg",
+      "format": "svg",
+      "reason": "Clean separate tonearm geometry.",
+      "editability": "imported as editable vector",
+      "text_handling": "not text"
+    }
+  ],
+  "background_mode": "spec",
+  "icon_composer_fill": {
+    "linear-gradient": [
+      "extended-srgb:0.890,0.925,0.902,1.000",
+      "extended-srgb:0.690,0.780,0.741,1.000"
+    ],
+    "orientation": {
+      "start": {
+        "x": 0.5,
+        "y": 1
+      },
+      "stop": {
+        "x": 0.5,
+        "y": 0
+      }
+    }
+  },
+  "semantic_review": {
+    "status": "exact-enough",
+    "identity_risk": "low",
+    "basis": "Original direct-authored turntable icon; the old graphic is context for a requested redesign, not an identity to reproduce.",
+    "route": "semantic-svg",
+    "notes": "Retains a vinyl and green accent while intentionally changing the palette, composition, and adding a tonearm."
+  },
+  "source_analysis": {
+    "fidelity_target": "An intentional redesign preserving vinyl-player meaning, not pixel matching.",
+    "identity_risk": "low",
+    "route": "semantic-svg",
+    "must_preserve": [
+      "recognizable record and center label",
+      "strong silhouette at small sizes"
+    ],
+    "must_not_add": [
+      "text",
+      "third-party logos",
+      "dense white grooves"
+    ],
+    "components": [
+      {
+        "id": "record",
+        "layer": "record",
+        "format": "svg",
+        "spec_constraints": []
+      },
+      {
+        "id": "label",
+        "layer": "label",
+        "format": "svg",
+        "spec_constraints": []
+      },
+      {
+        "id": "tonearm",
+        "layer": "tonearm",
+        "format": "svg",
+        "spec_constraints": []
+      }
+    ],
+    "acceptance_checks": [
+      "record and tonearm remain recognizable at 64 pixels"
+    ]
+  },
+  "warnings": [],
+  "claims": [
+    "spec-driven reusable cross-platform icon source package",
+    "semantic source layers retained",
+    "rounded preview PNG rendered by @resvg/resvg-js",
+    "unrounded app/source canvas outputs retained separately from preview masking",
+    "Icon Composer SVG imports contain no text, image, filter, clipPath, mask, foreignObject, script, external href, or full-canvas rounded mask elements"
+  ]
+}

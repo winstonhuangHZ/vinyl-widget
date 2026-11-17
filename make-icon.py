@@ -1,56 +1,41 @@
 #!/usr/bin/env python3
-"""Generates Resources/AppIcon.icns (a vinyl record). Only needed when the art changes;
-the .icns is committed, so building the app never requires Python or Pillow."""
-import os, math, shutil, subprocess, sys
+"""Build the macOS .icns from the checked-in, editable icon design preview.
+
+The design spec and SVG layers are in design/vinyl-icon. Pillow and Apple's
+iconutil are only needed when regenerating the icon, not when building the app.
+"""
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+
 try:
-    from PIL import Image, ImageDraw
+    from PIL import Image
 except ImportError:
-    sys.exit("needs Pillow:  pip3 install pillow")
+    sys.exit("Pillow is required to regenerate the icon: pip3 install pillow")
 
-S = 1024
-img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-d = ImageDraw.Draw(img)
+root = Path(__file__).resolve().parent
+source = root / "design/vinyl-icon/vinyl-icon.preview.png"
+destination = root / "Resources/AppIcon.icns"
+source_image = Image.open(source).convert("RGBA")
+if source_image.size != (1024, 1024):
+    sys.exit(f"Expected a 1024×1024 source icon, got {source_image.size}")
 
-# rounded card with a top-to-bottom gray gradient
-card = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-cd = ImageDraw.Draw(card)
-for y in range(S):
-    t = y / S
-    v = int(0xA9 + (0x70 - 0xA9) * t)
-    cd.line([(0, y), (S, y)], fill=(v, v, v, 255))
-mask = Image.new("L", (S, S), 0)
-ImageDraw.Draw(mask).rounded_rectangle([0, 0, S - 1, S - 1], radius=int(S * 0.22), fill=255)
-img.paste(card, (0, 0), mask)
+# A legacy .icns has no system-applied Mac icon inset.  Center the rounded
+# artwork in the same 824-point footprint used by common macOS app icons.
+image = Image.new("RGBA", (1024, 1024), (0, 0, 0, 0))
+artwork = source_image.resize((824, 824), Image.Resampling.LANCZOS)
+image.alpha_composite(artwork, (100, 100))
 
-cx = cy = S / 2
-R = S * 0.40
-d.ellipse([cx - R, cy - R, cx + R, cy + R], fill=(18, 18, 18, 255))
-for i in range(14):                                   # grooves
-    r = R * (0.42 + i * 0.041)
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=(255, 255, 255, 16), width=2)
-lr = R * 0.38                                          # label
-d.ellipse([cx - lr, cy - lr, cx + lr, cy + lr], fill=(0x1D, 0xD6, 0x5F, 255))
-hr = R * 0.045                                         # spindle hole
-d.ellipse([cx - hr, cy - hr, cx + hr, cy + hr], fill=(20, 20, 20, 255))
-
-# highlight sweep across the disc
-gloss = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-gd = ImageDraw.Draw(gloss)
-gd.polygon([(cx - R, cy - R * 0.55), (cx + R, cy - R), (cx + R, cy - R * 0.72),
-            (cx - R, cy - R * 0.30)], fill=(255, 255, 255, 26))
-disc_mask = Image.new("L", (S, S), 0)
-ImageDraw.Draw(disc_mask).ellipse([cx - R, cy - R, cx + R, cy + R], fill=255)
-img.paste(Image.alpha_composite(img.crop((0, 0, S, S)), gloss), (0, 0), disc_mask)
-
-here = os.path.dirname(os.path.abspath(__file__))
-iconset = os.path.join(here, "AppIcon.iconset")
-shutil.rmtree(iconset, ignore_errors=True)
-os.makedirs(iconset)
-for size in (16, 32, 64, 128, 256, 512):
-    img.resize((size, size), Image.LANCZOS).save(f"{iconset}/icon_{size}x{size}.png")
-    img.resize((size * 2, size * 2), Image.LANCZOS).save(f"{iconset}/icon_{size}x{size}@2x.png")
-os.makedirs(os.path.join(here, "Resources"), exist_ok=True)
-out = os.path.join(here, "Resources", "AppIcon.icns")
-subprocess.run(["iconutil", "-c", "icns", iconset, "-o", out], check=True)
-shutil.rmtree(iconset, ignore_errors=True)
-print("wrote", out)
+destination.parent.mkdir(parents=True, exist_ok=True)
+with tempfile.TemporaryDirectory(prefix="vinyl-icon-") as temporary:
+    iconset = Path(temporary) / "AppIcon.iconset"
+    iconset.mkdir()
+    for size in (16, 32, 128, 256, 512):
+        for factor in (1, 2):
+            suffix = "@2x" if factor == 2 else ""
+            image.resize((size * factor, size * factor), Image.Resampling.LANCZOS).save(
+                iconset / f"icon_{size}x{size}{suffix}.png"
+            )
+    subprocess.run(["iconutil", "-c", "icns", str(iconset), "-o", str(destination)], check=True)
+print(f"wrote {destination}")

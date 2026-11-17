@@ -1,0 +1,75 @@
+{
+  "color-space-for-untagged-svg-colors": "display-p3",
+  "fill": {
+    "linear-gradient": [
+      "extended-srgb:0.890,0.925,0.902,1.000",
+      "extended-srgb:0.690,0.780,0.741,1.000"
+    ],
+    "orientation": {
+      "start": {
+        "x": 0.5,
+        "y": 1
+      },
+      "stop": {
+        "x": 0.5,
+        "y": 0
+      }
+    }
+  },
+  "groups": [
+    {
+      "blend-mode": "normal",
+      "hidden": false,
+      "layers": [
+        {
+          "image-name": "03-tonearm.svg",
+          "name": "tonearm",
+          "position": {
+            "scale": 1,
+            "translation-in-points": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "image-name": "02-label.svg",
+          "name": "label",
+          "position": {
+            "scale": 1,
+            "translation-in-points": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "image-name": "01-record.svg",
+          "name": "record",
+          "position": {
+            "scale": 1,
+            "translation-in-points": [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "lighting": "individual",
+      "name": "vinylicon",
+      "position": {
+        "scale": 1,
+        "translation-in-points": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "supported-platforms": {
+    "circles": [
+      "watchOS"
+    ],
+    "squares": "shared"
+  }
+}

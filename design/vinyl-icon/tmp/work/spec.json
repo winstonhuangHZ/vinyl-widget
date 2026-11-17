@@ -1,0 +1,99 @@
+{
+  "name": "VinylIcon",
+  "target_platforms": [
+    "macOS"
+  ],
+  "deliverable_type": "icon-composer-package",
+  "source_reference": "Existing Vinyl Widget app icon, used for product context; intentional modern redesign.",
+  "brief": "A modern, restrained macOS icon for a Spotify vinyl player: a graphite record, soft mint label, and a simple silver tonearm on a pale sage field. Recognizable at Dock size.",
+  "semantic_review": {
+    "status": "exact-enough",
+    "identity_risk": "low",
+    "basis": "Original direct-authored turntable icon; the old graphic is context for a requested redesign, not an identity to reproduce.",
+    "route": "semantic-svg",
+    "notes": "Retains a vinyl and green accent while intentionally changing the palette, composition, and adding a tonearm."
+  },
+  "source_analysis": {
+    "fidelity_target": "An intentional redesign preserving vinyl-player meaning, not pixel matching.",
+    "identity_risk": "low",
+    "route": "semantic-svg",
+    "must_preserve": [
+      "recognizable record and center label",
+      "strong silhouette at small sizes"
+    ],
+    "must_not_add": [
+      "text",
+      "third-party logos",
+      "dense white grooves"
+    ],
+    "components": [
+      {
+        "id": "record",
+        "layer": "record",
+        "format": "svg"
+      },
+      {
+        "id": "label",
+        "layer": "label",
+        "format": "svg"
+      },
+      {
+        "id": "tonearm",
+        "layer": "tonearm",
+        "format": "svg"
+      }
+    ],
+    "acceptance_checks": [
+      "record and tonearm remain recognizable at 64 pixels"
+    ]
+  },
+  "fill": {
+    "linear-gradient": [
+      "extended-srgb:0.890,0.925,0.902,1.000",
+      "extended-srgb:0.690,0.780,0.741,1.000"
+    ],
+    "orientation": {
+      "start": {
+        "x": 0.5,
+        "y": 1
+      },
+      "stop": {
+        "x": 0.5,
+        "y": 0
+      }
+    }
+  },
+  "layers": [
+    {
+      "name": "background",
+      "svg": "<defs><linearGradient id=\"field\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#E3ECE6\"/><stop offset=\"1\" stop-color=\"#B0C7BD\"/></linearGradient></defs><rect width=\"1024\" height=\"1024\" fill=\"url(#field)\"/>",
+      "composer": {
+        "include": false
+      }
+    },
+    {
+      "name": "record",
+      "svg": "<circle cx=\"470\" cy=\"532\" r=\"305\" fill=\"#202B2B\"/><circle cx=\"470\" cy=\"532\" r=\"284\" fill=\"#101919\"/><circle cx=\"470\" cy=\"532\" r=\"257\" fill=\"#202C2B\"/><circle cx=\"470\" cy=\"532\" r=\"251\" fill=\"#111A1A\"/><circle cx=\"470\" cy=\"532\" r=\"222\" fill=\"#202C2B\"/><circle cx=\"470\" cy=\"532\" r=\"216\" fill=\"#111A1A\"/><circle cx=\"470\" cy=\"532\" r=\"187\" fill=\"#202C2B\"/><circle cx=\"470\" cy=\"532\" r=\"181\" fill=\"#111A1A\"/>",
+      "composer": {
+        "format": "svg",
+        "reason": "Editable circles representing the record and a few restrained grooves."
+      }
+    },
+    {
+      "name": "label",
+      "svg": "<circle cx=\"470\" cy=\"532\" r=\"111\" fill=\"#7BD3AC\"/><circle cx=\"470\" cy=\"532\" r=\"17\" fill=\"#1B2C28\"/><circle cx=\"466\" cy=\"528\" r=\"5\" fill=\"#DFF7E8\"/>",
+      "composer": {
+        "format": "svg",
+        "reason": "Separate record label and spindle."
+      }
+    },
+    {
+      "name": "tonearm",
+      "svg": "<path d=\"M762 259 C769 247 782 243 794 250 C806 257 810 269 803 281 L713 449 L686 435 Z\" fill=\"#C5D4CD\"/><path d=\"M687 426 L717 443 L691 493 Q686 502 677 497 L662 489 Q653 484 658 475 Z\" fill=\"#E6EFE9\"/><circle cx=\"784\" cy=\"261\" r=\"39\" fill=\"#91ABA0\"/><circle cx=\"784\" cy=\"261\" r=\"29\" fill=\"#DAE9E1\"/><circle cx=\"784\" cy=\"261\" r=\"8\" fill=\"#829E91\"/>",
+      "composer": {
+        "format": "svg",
+        "reason": "Clean separate tonearm geometry."
+      }
+    }
+  ]
+}

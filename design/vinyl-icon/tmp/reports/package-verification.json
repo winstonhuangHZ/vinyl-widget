@@ -1,0 +1,206 @@
+{
+  "status": "ok",
+  "out": ".",
+  "style_report": "tmp/reports/style-report.json",
+  "reports_dir": "tmp/reports",
+  "target_platforms": [
+    "macOS"
+  ],
+  "deliverable_type": "icon-composer-package",
+  "preview_svg": "vinyl-icon.preview.svg",
+  "preview_png": {
+    "width": 1024,
+    "height": 1024,
+    "visible_pixels": 1006147,
+    "visible_bounds": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1023,
+      "max_y": 1023
+    }
+  },
+  "app_svg": "vinyl-icon.svg",
+  "app_png": {
+    "width": 1024,
+    "height": 1024,
+    "visible_pixels": 1048576,
+    "visible_bounds": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1023,
+      "max_y": 1023
+    }
+  },
+  "icon_composer_bundle": "VinylIcon.icon",
+  "apple_adapter": {
+    "bundle": "VinylIcon.icon",
+    "exports": {
+      "status": "skipped",
+      "reason": "icon-composer-ictool-not-found",
+      "scale": 1,
+      "platforms": [
+        "macOS"
+      ],
+      "profiles": [
+        {
+          "platform": "macOS",
+          "width": 1024,
+          "height": 1024,
+          "renditions": [
+            "Default",
+            "Dark",
+            "TintedLight",
+            "TintedDark",
+            "ClearLight",
+            "ClearDark"
+          ]
+        }
+      ],
+      "files": []
+    }
+  },
+  "generated_files_manifest_validation": {
+    "status": "valid",
+    "files": [
+      "vinyl-icon.preview.svg",
+      "vinyl-icon.preview.png",
+      "vinyl-icon.svg",
+      "vinyl-icon.png",
+      "layers/01-background.svg",
+      "layers/02-record.svg",
+      "layers/03-label.svg",
+      "layers/04-tonearm.svg",
+      "VinylIcon.icon/icon.json",
+      "VinylIcon.icon/Assets/01-record.svg",
+      "VinylIcon.icon/Assets/02-label.svg",
+      "VinylIcon.icon/Assets/03-tonearm.svg",
+      "tmp/README.md",
+      "tmp/reports/style-report.json",
+      "tmp/reports/package-verification.json",
+      "tmp/reports/reference-diff.png",
+      "tmp/reports/reference-overlay.png",
+      "tmp/reports/reference-side-by-side.png",
+      "tmp/reports/visual-review.json"
+    ],
+    "problems": []
+  },
+  "checked_assets": [
+    "VinylIcon.icon/Assets/01-record.svg",
+    "VinylIcon.icon/Assets/02-label.svg",
+    "VinylIcon.icon/Assets/03-tonearm.svg"
+  ],
+  "icon_composer_layer_decisions": [
+    {
+      "layer": "record",
+      "asset": "VinylIcon.icon/Assets/01-record.svg",
+      "source_layer": "layers/02-record.svg",
+      "format": "svg",
+      "reason": "Editable circles representing the record and a few restrained grooves.",
+      "editability": "imported as editable vector",
+      "text_handling": "not text"
+    },
+    {
+      "layer": "label",
+      "asset": "VinylIcon.icon/Assets/02-label.svg",
+      "source_layer": "layers/03-label.svg",
+      "format": "svg",
+      "reason": "Separate record label and spindle.",
+      "editability": "imported as editable vector",
+      "text_handling": "not text"
+    },
+    {
+      "layer": "tonearm",
+      "asset": "VinylIcon.icon/Assets/03-tonearm.svg",
+      "source_layer": "layers/04-tonearm.svg",
+      "format": "svg",
+      "reason": "Clean separate tonearm geometry.",
+      "editability": "imported as editable vector",
+      "text_handling": "not text"
+    }
+  ],
+  "svg_material_warnings": [],
+  "png_layer_hygiene": [],
+  "semantic_review": {
+    "status": "exact-enough",
+    "identity_risk": "low",
+    "basis": "Original direct-authored turntable icon; the old graphic is context for a requested redesign, not an identity to reproduce.",
+    "route": "semantic-svg",
+    "notes": "Retains a vinyl and green accent while intentionally changing the palette, composition, and adding a tonearm."
+  },
+  "source_analysis": {
+    "fidelity_target": "An intentional redesign preserving vinyl-player meaning, not pixel matching.",
+    "identity_risk": "low",
+    "route": "semantic-svg",
+    "must_preserve": [
+      "recognizable record and center label",
+      "strong silhouette at small sizes"
+    ],
+    "must_not_add": [
+      "text",
+      "third-party logos",
+      "dense white grooves"
+    ],
+    "components": [
+      {
+        "id": "record",
+        "layer": "record",
+        "format": "svg",
+        "spec_constraints": []
+      },
+      {
+        "id": "label",
+        "layer": "label",
+        "format": "svg",
+        "spec_constraints": []
+      },
+      {
+        "id": "tonearm",
+        "layer": "tonearm",
+        "format": "svg",
+        "spec_constraints": []
+      }
+    ],
+    "acceptance_checks": [
+      "record and tonearm remain recognizable at 64 pixels"
+    ]
+  },
+  "source_analysis_validation": {
+    "status": "valid",
+    "problems": []
+  },
+  "acceptance": null,
+  "visual_review": {
+    "decision": "accepted",
+    "reviewer": "main_agent_visual_review",
+    "evidence": [
+      "vinyl-icon.preview.png",
+      "tmp/work/macOS-preview.png",
+      "tmp/work/macOS-64.png",
+      "tmp/work/previous-vs-redesign.png",
+      "tmp/work/previous-overlay.png",
+      "tmp/work/previous-diff.png"
+    ],
+    "notes": "Reviewed a new low-risk vinyl concept at full and small size. The original-image pixel comparison fails because this is the requested redesign, with new geometry and colors; exact matching is not the goal. The packaged legacy macOS icon adds a 100 px transparent inset on every side, matching the visible bounds checked on installed Spotify and Music icons."
+  },
+  "apple_exports_validation": {
+    "status": "not_generated",
+    "platforms": [],
+    "files": [],
+    "problems": []
+  },
+  "outcome": {
+    "pixel_status": "not_required",
+    "local_gate_status": "not_checked",
+    "semantic_status": "exact-enough",
+    "identity_risk": "low",
+    "route": "semantic-svg",
+    "deliverable_type": "icon-composer-package",
+    "asset_format": "svg",
+    "route_status": "complete_candidate",
+    "review_required": false,
+    "recommended_action": "inspect_named_outputs_and_icon_composer_assets"
+  },
+  "reference_comparison": null,
+  "warnings": [],
+  "failures": []
+}
